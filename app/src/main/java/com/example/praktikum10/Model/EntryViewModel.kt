@@ -5,9 +5,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.example.praktikum10.Data.Siswa
-import com.example.praktikum10.Repositori.OfflineRepositoriSiswa
+import com.example.praktikum10.Repositori.RepositoriSiswa
 
-class EntryViewModel(private val repositoriSiswa: OfflineRepositoriSiswa): ViewModel() {
+class EntryViewModel(private val repositoriSiswa: RepositoriSiswa): ViewModel() {
     /**
      * Berisi Status Siswa Saat ini
      */

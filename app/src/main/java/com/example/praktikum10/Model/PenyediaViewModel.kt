@@ -1,6 +1,7 @@
 package com.example.praktikum10.Model
 
-import android.text.Spannable.Factory
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.praktikum10.ui.theme.AplikasiSiswa
@@ -8,11 +9,16 @@ import com.example.praktikum10.ui.theme.AplikasiSiswa
 object PenyediaViewModel {
     val Factory = viewModelFactory {
         initializer {
-            HomeViewModel(AplikasiSiswa().container.repositoriSiswa)
+            HomeViewModel(aplikasiSiswa().container.repositoriSiswa)
         }
         initializer {
-            EntryViewModel(AplikasiSiswa().container.repositoriSiswa)
+            EntryViewModel(aplikasiSiswa().container.repositoriSiswa)
         }
     }
 }
 
+/**
+ * Fungsi ekstensi query untuk objek [Application] dan mengembalikan sebuah instance dari [AplikasiSiswa]
+ */
+
+fun CreationExtras.aplikasiSiswa():AplikasiSiswa = (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as AplikasiSiswa)
