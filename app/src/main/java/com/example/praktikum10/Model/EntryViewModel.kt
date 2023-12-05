@@ -28,7 +28,7 @@ class EntryViewModel(private val repositoriSiswa: OfflineRepositoriSiswa): ViewM
 
     /*Fungsi Untuk menyimpan data yg dientry*/
 
-    suspend fun saveSis(){
+    suspend fun saveSiswa(){
         if(validasiInput()){
             repositoriSiswa.insertSiswa(uiStateSiswa.detailSiswa.toSiswa())
         }
