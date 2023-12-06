@@ -12,7 +12,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import com.example.praktikum10.R
+import com.example.praktikum10.ui.theme.Halaman.DestinasiEntry
+import com.example.praktikum10.ui.theme.Halaman.DestinasiHome
+import com.example.praktikum10.ui.theme.Halaman.EntrySiswaScreen
+import com.example.praktikum10.ui.theme.Halaman.HomeScreen
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -44,4 +50,18 @@ fun SiswaTopAppBar(
 fun HostNavigasi(
     navController: NavHostController,
     modifier: Modifier = Modifier
-) {}
+) {
+    NavHost(
+        navController = navController,
+        startDestination = DestinasiHome.route,
+        modifier = Modifier
+    ){
+        composable(DestinasiHome.route){
+            HomeScreen(
+                navigateToItemEntry = { navController.navigate(DestinasiEntry.route)})
+        }
+        composable(DestinasiEntry.route){
+            EntrySiswaScreen(navigateBack = { navController.popBackStack() })
+        }
+    }
+}
