@@ -1,5 +1,9 @@
 package com.example.praktikum10.ui.theme.Halaman
 
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarDefaults
@@ -13,8 +17,9 @@ import com.example.praktikum10.Model.EntryViewModel
 import com.example.praktikum10.Model.PenyediaViewModel
 import com.example.praktikum10.R
 import com.example.praktikum10.navigasi.DestinasiNavigasi
+import kotlinx.coroutines.launch
 
-object DestinasiEntry: DestinasiNavigasi {
+object DestinasiEntry : DestinasiNavigasi {
     override val route = "item_entry"
     override val titleRes = R.string.entry_siswa
 }
@@ -38,5 +43,20 @@ fun EntrySiswaScreen(
                 scrollBehavior = scrollBehavior
             )
         }
-    ){}
+    ) { innerPadding ->
+        EntrySiswaBody(
+            uiStateSiswa = viewModel.uiStateSiswa,
+            onSiswaValueChange = viewModel::updateUiState,
+            onSaveClick = {
+                coroutineScope.launch {
+                    viewModel.saveSiswa()
+                    navigateBack()
+                }
+            },
+            modifier = Modifier
+                .padding(innerPadding)
+                .verticalScroll(rememberScrollState())
+                .fillMaxWidth()
+        )
+    }
 }
