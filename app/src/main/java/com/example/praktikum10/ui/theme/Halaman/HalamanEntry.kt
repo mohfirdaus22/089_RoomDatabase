@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -121,6 +122,15 @@ fun FormInputSiswa(
             value = detailSiswa.alamat,
             onValueChange ={onValueChange(detailSiswa.copy(alamat = it))},
             label = { Text(stringResource(R.string.alamat)) },
+            singleLine = true,
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enabled
+        )
+        OutlinedTextField(
+            value = detailSiswa.telpon,
+            onValueChange ={onValueChange(detailSiswa.copy(telpon = it))},
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            label = { Text(stringResource(R.string.telpon)) },
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled
