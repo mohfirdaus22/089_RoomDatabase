@@ -135,5 +135,11 @@ fun FormInputSiswa(
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled
         )
+        if (enabled) {
+            Text(
+                text = stringResource(id = R.string.required_field),
+                modifier = Modifier.padding(start = dimensionResource(id = R.dimen.padding_medium))
+            )
+        }
     }
 }
