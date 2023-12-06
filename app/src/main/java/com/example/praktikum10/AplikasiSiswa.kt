@@ -1,4 +1,4 @@
-package com.example.praktikum10.ui.theme
+package com.example.praktikum10
 
 import android.app.Application
 import com.example.praktikum10.Repositori.ContainerApp
